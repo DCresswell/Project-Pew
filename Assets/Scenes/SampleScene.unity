@@ -460,7 +460,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.39, z: -11.52}
+  m_LocalPosition: {x: 0, y: 0.6, z: -21.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 605830873}
@@ -608,7 +608,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7581800989570018342, guid: 1a037d5c9e32f5d4abed21960c22ed34, type: 3}
       propertyPath: m_Name
-      value: StarSparrow11
+      value: player(Ship)
       objectReference: {fileID: 0}
     - target: {fileID: 7583431329960269220, guid: 1a037d5c9e32f5d4abed21960c22ed34, type: 3}
       propertyPath: m_RootOrder
