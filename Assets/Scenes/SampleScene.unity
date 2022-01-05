@@ -606,34 +606,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 605830873}
     m_Modifications:
-    - target: {fileID: 695030026427555554, guid: 1a037d5c9e32f5d4abed21960c22ed34, type: 3}
-      propertyPath: xRange
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 695030026427555554, guid: 1a037d5c9e32f5d4abed21960c22ed34, type: 3}
-      propertyPath: yRange
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 695030026427555554, guid: 1a037d5c9e32f5d4abed21960c22ed34, type: 3}
-      propertyPath: thrustPower
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 695030026427555554, guid: 1a037d5c9e32f5d4abed21960c22ed34, type: 3}
-      propertyPath: posYawFactor
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 695030026427555554, guid: 1a037d5c9e32f5d4abed21960c22ed34, type: 3}
-      propertyPath: posPitchFactor
-      value: -2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 695030026427555554, guid: 1a037d5c9e32f5d4abed21960c22ed34, type: 3}
-      propertyPath: controlRollFactor
-      value: -35
-      objectReference: {fileID: 0}
-    - target: {fileID: 695030026427555554, guid: 1a037d5c9e32f5d4abed21960c22ed34, type: 3}
-      propertyPath: controlGravityFactor
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7581800989570018342, guid: 1a037d5c9e32f5d4abed21960c22ed34, type: 3}
       propertyPath: m_Name
       value: player(Ship)
