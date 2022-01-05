@@ -16,8 +16,9 @@ public class PlayerControls : MonoBehaviour
      [SerializeField] float posYawFactor = 3.5f;
      [SerializeField] float controlRollFactor = -25f;
     [SerializeField] InputAction movement;
+    [SerializeField, Range(0f,100f)] float controlGravityFactor = 10f;
 
-    float xThrust, yThrust;
+    float xThrustRaw, yThrustRaw, xDelta, yDelta, xThrust, yThrust;
     
     //[SerializeField] InputAction fire;
 
@@ -30,11 +31,22 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        xThrustRaw = movement.ReadValue<Vector2>().x;
+        yThrustRaw = movement.ReadValue<Vector2>().y;
+        PrepareThrust();
         ProcessTranslation();
         ProcessRotation();
 
     }
 
+    void PrepareThrust()
+    {
+        xDelta = Mathf.MoveTowards(xDelta,xThrustRaw, Time.fixedDeltaTime * controlGravityFactor);
+        yDelta = Mathf.MoveTowards(yDelta,yThrustRaw, Time.fixedDeltaTime * controlGravityFactor);
+
+        xThrust = Mathf.Clamp(xDelta,-1f,1f);
+        yThrust = Mathf.Clamp(yDelta,-1f,1f);
+    }
     void ProcessRotation()
     {
         // things todo with rotation (pitch, yaw, roll)
@@ -56,9 +68,6 @@ public class PlayerControls : MonoBehaviour
     void ProcessTranslation()
     {
         //New input system
-        xThrust = movement.ReadValue<Vector2>().x;
-        yThrust = movement.ReadValue<Vector2>().y;
-
         float xOffset = thrustPower * xThrust * Time.deltaTime;
         float yOffset = thrustPower * yThrust * Time.deltaTime;
 
