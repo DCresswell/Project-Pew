@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,27 +8,33 @@ using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
+    [Header("Objects")]
     //Add the serialized fields for the new input system
-    [SerializeField] float thrustPower = 25f;
-    [SerializeField] float xRange = 14f;
-     [SerializeField] float yRange = 9f;
-     [SerializeField] float posPitchFactor = -3f;
-     [SerializeField] float controlPitchFactor = -10f;
-     [SerializeField] float posYawFactor = 3.5f;
-     [SerializeField] float controlRollFactor = -25f;
+    [SerializeField] GameObject[] lasers;
+
+    [Header("Ship movement settings")]
+    [Tooltip("How fast ship moves up/down/left/right based on player input")][SerializeField] float thrustPower = 25f;
+    [Tooltip("How far ship can move horizontally")][SerializeField] float xRange = 14f;
+    [Tooltip("How far ship can move vertically")][SerializeField] float yRange = 9f;
+
+    [Header("Ship rotation settings")]
+     [Tooltip("'Head nod' rotation based on screen position")][SerializeField] float posPitchFactor = -3f;
+     [Tooltip("'Head nod' rotation based on user input")][SerializeField] float controlPitchFactor = -10f;
+     [Tooltip("'Head shake' rotation based on screen position")][SerializeField] float posYawFactor = 3.5f;
+     [Tooltip("'Head cock' rotation based on user input")][SerializeField] float controlRollFactor = -25f;
+    [Tooltip("Gravity delay factor on thrust user input")][SerializeField, Range(0f,100f)] float controlGravityFactor = 10f;
+
+    [Header("Input controls")]
     [SerializeField] InputAction movement;
-    [SerializeField, Range(0f,100f)] float controlGravityFactor = 10f;
+    [SerializeField] InputAction fire;
 
     float xThrustRaw, yThrustRaw, xDelta, yDelta, xThrust, yThrust;
-    
-    //[SerializeField] InputAction fire;
 
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -36,14 +43,41 @@ public class PlayerControls : MonoBehaviour
         PrepareThrust();
         ProcessTranslation();
         ProcessRotation();
+        ProcessFiring();
 
     }
 
+    void ProcessFiring()
+    {
+        //Debug.Log(temp);
+        if (fire.ReadValue<float>()>0.1f) 
+        {
+            //Debug.Log("fire");
+            SetLasersActive(true);
+        }
+        else
+        {
+            //Debug.Log("NO FIRE");
+            SetLasersActive(false);
+        }
+    }
+        void SetLasersActive(bool value)
+    {
+        // for each laser in array - activate
+        foreach (GameObject i in lasers)
+        {
+            var emissionModule = i.GetComponent<ParticleSystem>().emission;
+            emissionModule.enabled = value;
+        }
+    }
+    // process to create gravity effect on keyboard input
     void PrepareThrust()
     {
+        //add a delay in input so movement ramps up to 1
         xDelta = Mathf.MoveTowards(xDelta,xThrustRaw, Time.fixedDeltaTime * controlGravityFactor);
         yDelta = Mathf.MoveTowards(yDelta,yThrustRaw, Time.fixedDeltaTime * controlGravityFactor);
 
+        //limit movement value to 1.
         xThrust = Mathf.Clamp(xDelta,-1f,1f);
         yThrust = Mathf.Clamp(yDelta,-1f,1f);
     }
@@ -84,11 +118,13 @@ public class PlayerControls : MonoBehaviour
     //required to turn on and off new movement controls
     void OnEnable() 
     {
-        movement.Enable();   
+        movement.Enable();
+        fire.Enable();  
     }
 
     void OnDisable() 
     {
-        movement.Disable();     
+        movement.Disable(); 
+        fire.Disable();    
     }
 }
