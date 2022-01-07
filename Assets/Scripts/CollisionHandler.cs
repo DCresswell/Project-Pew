@@ -8,6 +8,7 @@ public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float loadDelay = 1f;
     [SerializeField] ParticleSystem blast;
+    [SerializeField] GameObject[] shipColliders;
     void OnCollisionEnter(Collision other) 
     {  
         Debug.Log(gameObject.name + " bumped into " + other.gameObject.name); 
@@ -25,7 +26,11 @@ public class CollisionHandler : MonoBehaviour
         GetComponent<PlayerControls>().enabled=false;
         blast.Play();  //play explosion
         GetComponent<MeshRenderer>().enabled=false;  
-        GetComponent<BoxCollider>().enabled=false;
+        //GetComponent<BoxCollider>().enabled=false;
+        foreach (GameObject i in shipColliders)
+        {
+            i.GetComponent<BoxCollider>().enabled=false; 
+        }
         Invoke("ReloadLevel", loadDelay);
     }
 
