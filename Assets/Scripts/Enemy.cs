@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,23 +6,43 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 [SerializeField] GameObject enemyExplosion;
+[SerializeField] GameObject enemyHit;
 [SerializeField] Transform parent;
-[SerializeField] int enemyPoints = 10;
+[SerializeField] int enemyHealth = 50;
+[SerializeField] int enemyScorePerHit = 10;
 
 ScoreBoard scoreBoard;
+WeaponDamage weaponDamage;
 
 void Start() 
 {
    scoreBoard = FindObjectOfType<ScoreBoard>(); 
 }
 
-private void OnParticleCollision(GameObject other) 
+void OnParticleCollision(GameObject other)
 {
-    Debug.Log("hit!!!");  
-    GameObject vfx = Instantiate(enemyExplosion, transform.position, Quaternion.identity); //current position, no rotation
-    vfx.transform.parent = parent;
-    Destroy(this.gameObject);  
-    scoreBoard.IncreaseScore(enemyPoints);
+    ProcessScore();
+    ProcessHit(other);
+    if (enemyHealth <= 0){ KillEnemy();}
 }
 
+void ProcessScore()
+{
+    scoreBoard.IncreaseScore(enemyScorePerHit);
+}
+
+void ProcessHit(GameObject weapon)
+{
+    GameObject vfx = Instantiate(enemyHit, transform.position, Quaternion.identity); //current position, no rotation
+    vfx.transform.parent = parent;
+    weaponDamage = weapon.GetComponent<WeaponDamage>();
+    enemyHealth -= weaponDamage.getWeaponDamage();
+    //Debug.Log($"{this.name} has {enemyHealth} life left.");
+}
+void KillEnemy()
+{
+    GameObject vfx = Instantiate(enemyExplosion, transform.position, Quaternion.identity); //current position, no rotation
+    vfx.transform.parent = parent;
+    Destroy(this.gameObject);
+}
 }
