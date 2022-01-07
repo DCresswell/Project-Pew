@@ -14,16 +14,23 @@ public class Enemy : MonoBehaviour
 ScoreBoard scoreBoard;
 WeaponDamage weaponDamage;
 
-void Start() 
-{
-   scoreBoard = FindObjectOfType<ScoreBoard>(); 
-}
+void Start()
+    {
+        scoreBoard = FindObjectOfType<ScoreBoard>();
+        AddRigidBody();
+    }
 
-void OnParticleCollision(GameObject other)
+    void AddRigidBody()
+    {
+        Rigidbody rb = gameObject.AddComponent<Rigidbody>(); //add rigid body to the game object this script is on (declaring a variable for clarity)
+        rb.useGravity = false;
+    }
+
+    void OnParticleCollision(GameObject other)
 {
     ProcessScore();
     ProcessHit(other);
-    if (enemyHealth <= 0){ KillEnemy();}
+    if (enemyHealth < 1){ KillEnemy();}
 }
 
 void ProcessScore()
