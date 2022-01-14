@@ -263,6 +263,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8305447494247768107, guid: ad72154421b4880479aa029b58c98237, type: 3}
   m_PrefabInstance: {fileID: 61535717}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &86242473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5907784291474246124, guid: 27517528a8793b247a1180e9902e7edb, type: 3}
+  m_PrefabInstance: {fileID: 6111796328939945476}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &135980204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,9 +1394,13 @@ PlayableDirector:
   m_ExposedReferences:
     m_References:
     - 2dd4643c51ece0645aa9982e4f654c78: {fileID: 345311416}
+    - e0f7da5c144d25c4193c54789bcb4005: {fileID: 86242473}
+    - 2a8920b258307a244932d2de3a3d6925: {fileID: 86242473}
     - 1c121a2e697beb648882dba1305eaee9: {fileID: 1796651175}
     - 157360b0822a5ca409a1786b6e05a554: {fileID: 1310907130}
     - bd716b479b2c4544d9816ca190414d06: {fileID: 0}
+    - fb5df8a7a8160eb4db44c9a5e53e44cb: {fileID: 86242473}
+    - 46ccb8e2fcd23ab42968d522f1f28795: {fileID: 86242473}
     - b5f1e433509b4b044b323a5d990d0cbf: {fileID: 135980204}
     - 9a7fda88dd732d84eb5a90f9b4def783: {fileID: 305625616}
     - ac35469a4f13afb449f66a51f60d6313: {fileID: 485523662}
