@@ -56,6 +56,8 @@ GameObject:
   - component: {fileID: 2883897117845536035}
   - component: {fileID: 2891349798762250149}
   - component: {fileID: 9156040893616712671}
+  - component: {fileID: -2335767932755712091}
+  - component: {fileID: 1922822411}
   m_Layer: 0
   m_Name: Groundhog
   m_TagString: Untagged
@@ -72,7 +74,7 @@ Transform:
   m_GameObject: {fileID: 2915217258059700979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20.33789, y: 3.6000037, z: 6.1116056}
-  m_LocalScale: {x: 4, y: 4, z: 1.7}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 2910171921983739151}
   m_Father: {fileID: 0}
@@ -139,11 +141,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5b2b54f3a84124fb625b03c85a5847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyExplosion: {fileID: 8117291162897490767, guid: b0561467f18e5cb49a18f80737833d8e, type: 3}
+  deathFX: {fileID: 8117291162897490767, guid: b0561467f18e5cb49a18f80737833d8e, type: 3}
   enemyHit: {fileID: 8117291162897490767, guid: c0b18cd89caa23443a98b7b980fda6bb, type: 3}
-  parent: {fileID: 0}
   enemyHealth: 2
   enemyScorePerHit: 50
+--- !u!65 &-2335767932755712091
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915217258059700979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 3, z: 11.603617}
+  m_Center: {x: 0, y: 0.7, z: 0}
+--- !u!95 &1922822411
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915217258059700979}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2915571849152756315
 GameObject:
   m_ObjectHideFlags: 0

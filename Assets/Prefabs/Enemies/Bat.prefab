@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1602775340056298839}
   - component: {fileID: 1591248132995940863}
   - component: {fileID: 2638155673591819143}
+  - component: {fileID: 2580744078440173333}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Untagged
@@ -95,10 +96,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5b2b54f3a84124fb625b03c85a5847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyExplosion: {fileID: 8117291162897490767, guid: b0561467f18e5cb49a18f80737833d8e, type: 3}
+  deathFX: {fileID: 8117291162897490767, guid: b0561467f18e5cb49a18f80737833d8e, type: 3}
   enemyHit: {fileID: 8117291162897490767, guid: c0b18cd89caa23443a98b7b980fda6bb, type: 3}
   enemyHealth: 2
   enemyScorePerHit: 25
+--- !u!65 &2580744078440173333
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603300143699641309}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.1566553, y: 2.955462, z: 10.7425585}
+  m_Center: {x: 0, y: -0.000011980534, z: 0}
 --- !u!1 &1603912509661671317
 GameObject:
   m_ObjectHideFlags: 0

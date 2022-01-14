@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 4975697017703071090}
   - component: {fileID: 7127453674543614392}
   - component: {fileID: -3118423843949985900}
+  - component: {fileID: 5574185183701871986}
   m_Layer: 0
   m_Name: Grasshopper
   m_TagString: Untagged
@@ -353,8 +354,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5b2b54f3a84124fb625b03c85a5847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyExplosion: {fileID: 8117291162897490767, guid: b0561467f18e5cb49a18f80737833d8e, type: 3}
+  deathFX: {fileID: 8117291162897490767, guid: b0561467f18e5cb49a18f80737833d8e, type: 3}
   enemyHit: {fileID: 8117291162897490767, guid: c0b18cd89caa23443a98b7b980fda6bb, type: 3}
-  parent: {fileID: 0}
   enemyHealth: 3
   enemyScorePerHit: 40
+--- !u!65 &5574185183701871986
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8784606607281891437}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.064258, y: 5.8733153, z: 15.652345}
+  m_Center: {x: 0, y: 0.00000023841858, z: 0}

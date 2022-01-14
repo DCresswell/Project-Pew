@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-[SerializeField] GameObject enemyExplosion;
+[SerializeField] GameObject deathFX;
 [SerializeField] GameObject enemyHit;
 //[SerializeField] Transform parent;
 [SerializeField] int enemyHealth = 50;
@@ -36,16 +36,17 @@ void Start()
 void ProcessHit(GameObject weapon)
 {
     ProcessScore();
-    GameObject vfx = Instantiate(enemyHit, transform.position, Quaternion.identity); //current position, no rotation
-    vfx.transform.parent = parentObject.transform;
+    GameObject fx = Instantiate(enemyHit, transform.position, Quaternion.identity); //current position, no rotation
+    fx.transform.parent = parentObject.transform;
     weaponDamage = weapon.GetComponent<WeaponDamage>();
     enemyHealth -= weaponDamage.getWeaponDamage();
     //Debug.Log($"{this.name} has {enemyHealth} life left.");
 }
 void KillEnemy()
 {
-    GameObject vfx = Instantiate(enemyExplosion, transform.position, Quaternion.identity); //current position, no rotation
+    GameObject vfx = Instantiate(deathFX, transform.position, Quaternion.identity); //current position, no rotation
     vfx.transform.parent = parentObject.transform;
+    vfx.GetComponent<AudioSource>().Play();
     Destroy(this.gameObject);
 }
 void ProcessScore()
