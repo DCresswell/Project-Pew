@@ -352,13 +352,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127facd79c8ade543a3f38c36951ceba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lasers: []
   thrustPower: 35
   xRange: 19
   yRange: 14
   posPitchFactor: -2.5
-  controlPitchFactor: -10
+  controlPitchFactor: -12
   posYawFactor: 2.5
   controlRollFactor: -35
+  controlGravityFactor: 3
   movement:
     m_Name: Movement
     m_Type: 0
@@ -455,7 +457,14 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Movement
       m_Flags: 0
-  controlGravityFactor: 3
+  fire:
+    m_Name: Fire
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 880dc950-c714-484e-882a-353866668812
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!1001 &1382920632414019714
 PrefabInstance:
   m_ObjectHideFlags: 0

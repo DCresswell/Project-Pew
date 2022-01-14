@@ -307,6 +307,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyExplosion: {fileID: 8117291162897490767, guid: b0561467f18e5cb49a18f80737833d8e, type: 3}
   enemyHit: {fileID: 8117291162897490767, guid: c0b18cd89caa23443a98b7b980fda6bb, type: 3}
-  parent: {fileID: 0}
-  enemyHealth: 25
-  enemyScorePerHit: 10
+  enemyHealth: 8
+  enemyScorePerHit: 5

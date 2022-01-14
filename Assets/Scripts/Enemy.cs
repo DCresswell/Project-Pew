@@ -12,13 +12,13 @@ public class Enemy : MonoBehaviour
 [SerializeField] int enemyScorePerHit = 10;
 
 ScoreBoard scoreBoard;
-GameObject parent;  
+GameObject parentObject;  
 WeaponDamage weaponDamage;
 
 void Start()
     {
         scoreBoard = FindObjectOfType<ScoreBoard>(); 
-        parent = GameObject.FindWithTag("SpawnAtRuntime");
+        parentObject = GameObject.FindWithTag("SpawnAtRuntime");
         AddRigidBody();
     }
 
@@ -30,20 +30,14 @@ void Start()
 
     void OnParticleCollision(GameObject other)
 {
-    ProcessScore();
     ProcessHit(other);
     if (enemyHealth < 1){ KillEnemy();}
 }
-
-void ProcessScore()
-{
-    scoreBoard.IncreaseScore(enemyScorePerHit);
-}
-
 void ProcessHit(GameObject weapon)
 {
+    ProcessScore();
     GameObject vfx = Instantiate(enemyHit, transform.position, Quaternion.identity); //current position, no rotation
-    vfx.transform.parent = parent.transform;
+    vfx.transform.parent = parentObject.transform;
     weaponDamage = weapon.GetComponent<WeaponDamage>();
     enemyHealth -= weaponDamage.getWeaponDamage();
     //Debug.Log($"{this.name} has {enemyHealth} life left.");
@@ -51,7 +45,11 @@ void ProcessHit(GameObject weapon)
 void KillEnemy()
 {
     GameObject vfx = Instantiate(enemyExplosion, transform.position, Quaternion.identity); //current position, no rotation
-    vfx.transform.parent = parent.transform;
+    vfx.transform.parent = parentObject.transform;
     Destroy(this.gameObject);
+}
+void ProcessScore()
+{
+    scoreBoard.IncreaseScore(enemyScorePerHit);
 }
 }
